@@ -19,7 +19,7 @@ public:
 void* raw = operator new(sizeof(B));
 B* obj = new(raw) B();
 
-obj->~B();           // ✅ valid
+obj->~B();           // valid
 operator delete(raw);
 int main() {
     A* p = new A();
