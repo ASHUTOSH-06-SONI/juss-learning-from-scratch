@@ -6,7 +6,7 @@
 // placement new 
 
 #include <iostream>
-
+// constructor is a special member function that is automatically called when an object of a class is created
 class A {
 public:
     A() { std::cout << "Constructor\n"; }
@@ -16,11 +16,22 @@ class B {
 public:
     ~B() { std::cout << "Destroyed\n"; }
 };
+class c {
+public:
+    c();                 // default constructor
+    c(int x);            // parameterized
+    c(const c& other);   // copy constructor
+    c(c && other);        // move constructor
+};
+/*
 void* raw = operator new(sizeof(B));
 B* obj = new(raw) B();
-
+HEAD
 obj->~B();           // valid
+obj->~B();           //  valid
+c6cbbe5 (Added custom vector implementation and gitignore)
 operator delete(raw);
+*/
 int main() {
     A* p = new A();
     // if i use delete;, output is constructor then destructor
