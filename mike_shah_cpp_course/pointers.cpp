@@ -1,5 +1,9 @@
 #include<iostream>
 using namespace std;
+int* returnmemory(){
+    int res = 6969; // this was just stack allocated memory
+    return &res;
+}
 int main(){
     // stores x ka address
     int x = 7;
@@ -18,6 +22,10 @@ int main(){
     while(true){
         int* ptr = new int[10]; // memory leak so this stuff ofccurs until the os eventually crashes 
     }
+    int* px2 = returnmemory();  // dangling pointers
+    cout<<"on dereferencing: "<<*px<<'\n';  // on purpose galti kar raha hu idhar 
+    // pointers.cpp:5:13: error: address of stack memory associated with local variable 'res' returned [-Werror,-Wreturn-stack-address]
+    // this happens coz it's not clear when &res goes out of scope, so what even are we de referencing 
     return 0;
 }
 
