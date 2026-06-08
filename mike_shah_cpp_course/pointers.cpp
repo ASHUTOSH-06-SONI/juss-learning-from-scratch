@@ -15,7 +15,10 @@ int main(){
     // pointer pitfalls
     int* px1 = nullptr;
     *px1 = 67;  // dereferencing something you don't have access to.
-    
+    while(true){
+        int* ptr = new int[10]; // memory leak so this stuff ofccurs until the os eventually crashes 
+    }
+    return 0;
 }
 
 /* what's the point?
