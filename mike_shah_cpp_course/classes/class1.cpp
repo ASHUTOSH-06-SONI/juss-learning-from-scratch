@@ -1,25 +1,6 @@
 #include<iostream>
 #include<string>
-class Student{
-    // 3 types of info can be stored in a class- public, private, protected 
-    // Class ka naam, Student constructor and destructor should be same 
-    public:
-    // special functions 
-        Student(){ // constructor, member function
-            std::cout<<"constructor"<<std::endl;
-        }
-        ~Student(){
-            // destructor
-            std::cout<<"destructor"<<std::endl;
-        }
-        void printname(){
-            std::cout<<"name is : "<<x_name<<std::endl;
-        }
-    private:  // hidden attributes of our class, can't be called outside the scope unless it's public
-        std::string m_name; 
-    public:
-        std::string x_name;
-};
+#include "student.hpp"
 int main(){
     std::cout<<"Start"<<std::endl;
     Student* Ash = new Student;
@@ -29,4 +10,7 @@ int main(){
     Ashu.x_name = "Ash";  
     Ashu.printname(); 
     return 0;
+    Student ashu; 
+    ashu.x_name = "not skill issue";
+    ashu.printname();
 }
