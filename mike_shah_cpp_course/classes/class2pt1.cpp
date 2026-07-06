@@ -1,4 +1,5 @@
 #include<iostream>
+// this stuff just does shallow copy and not deep copy 
 class Array{
     public:
         Array(){
@@ -26,7 +27,7 @@ int main(){
     Array ash_array;
     ash_array.set_Data(0,67676767);
     ash_array.set_Data(1,21);
-    ash_array.set_Data(2,5);
+    ash_array.set_Data(2,5); // copy works, yey
     ash_array.print_arr();
     Array ash_array2 = ash_array;  
     /*
