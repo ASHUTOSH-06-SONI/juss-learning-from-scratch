@@ -12,6 +12,10 @@ public:
     Array(const Array&){
         std::cout<<"Copy Ctors"<<std::endl;
     }
+    Array& operator=(const Array&){
+        std::cout << "Copy Assignment\n";
+        return *this;
+    }
     void Set_Data(int index, int value);
 };
 void Print_bugged(Array arr){
@@ -70,8 +74,8 @@ instead just construct x directly
 In first case, we just ask the compiler to show us what would happen without this optimization of removing redundant copying
 */
 int main(){
-    // bug 1 
-   Array a;
+    // bug 1   
+    Array a;
     Print_bugged(a);
     std::cout<<'\n';
     Print_kindafixed(a); 
@@ -81,5 +85,30 @@ int main(){
     std::cout<<"========================"<<std::endl;
     // bug 2
     Array x = Create();
-    return 0;
+    std::cout<<"========================"<<std::endl;
+    // bug 3- accidential copy 
+    Array b= a;  // this thing invokes the copy constructor
+    /* the whole flow is like- constructor invoked, then 
+    b=a invokes copy constructor coz copy initialization is done, 
+    then b gets destroyed coz main ka scope ends.
+    then a gets destroyed */
+    std::cout<<"========================"<<std::endl;
+    // bug 4
+    Array c;
+    c = a;  // the thing to notice here is that copy constructor isn't invoked, rather copy assignment
+    // why's that
+    /* think of it this way, c was already created, so that implies,
+    the house is already created, but now we revamp it by doing c= a
+    how dis differs from Array b= a ; is that in this case, we've just created a new object called b using a 
+    toh that's where the copy constructor gets invoked
+    FINALLY TO STATE THE KEY DIFFERENCE, C IS ALREADY CREATED, B IS NEW BORN
+    THE MOMENT B IS BORN, IT IS COPIED
+    C WAS ALREADY BORN SO NOW WE JUST DO CHANGES TO IT 
+    */
+    std::cout<<"========================"<<std::endl;
+    // bug 5
+    Array& ref = a;
+    std::cout<<"========================"<<std::endl;
+    // bug 6
+    const Array& ref2 = a;
 }
