@@ -1,6 +1,7 @@
 // we're gonna deliberately make some bugs in here and then write it's fixes in this code
 #include<iostream>
 // pass by value 
+#include<vector>
 class Array{
 public: 
     Array(){
@@ -68,6 +69,10 @@ Array Create(){
     Ctors
     Dtors    */
 }
+    Array identity(Array arr){
+        return arr;
+    }
+
 /*
 In second case, according to compiler why bother creating a, and then then copy it into x?
 instead just construct x directly
@@ -111,4 +116,11 @@ int main(){
     std::cout<<"========================"<<std::endl;
     // bug 6
     const Array& ref2 = a;
+    // bug 7
+    Array* ptr = &a;
+    std::vector<Array> v;
+    v.push_back(a); // vector copies the object into itself
+    v.push_back(std::move(a)); // fix to bug 7 
+    // bug 8 
+    identity(a);
 }
