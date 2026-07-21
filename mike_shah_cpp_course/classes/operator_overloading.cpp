@@ -14,7 +14,7 @@ class Vectoraah{
         so x,y,z order results in the output as such- lets say the order was float x,z,y, then it'd be perfectly fine
         RULE OF THUMB- THE ORDER IN WHICH YOU LAY OUT THE THINGS IN MEMORY, THE SAME ORDER MUST BE RETAINED WHILE INITIALIZING
         MEMBER INITIALIZER LIST 
-        */
+        */ 
         Vectoraah():y(x), z(2.0f), x(3.0f){
             // there's another way to initialize
            /* 
