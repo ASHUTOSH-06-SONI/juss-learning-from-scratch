@@ -1,10 +1,27 @@
 #include<iostream>
 class Vectoraah{
     public:
-        Vectoraah(){
+        float x,y,z;  
+        /* the way it works is ki order hoti hai ek 
+        ab if my order is x,y,z then the initialization of variables is also going to be that way
+        so if i initialize like y(3),z(2),x(1) the output's gonna be 3,2,1
+        Now talking about order, lets say i do y(x),z,x- the order of initialization was x,y,z
+        but now we're using x's value to initialize y
+        so it becomes 1,2,1
+        the reason as to why we emphasize on the order is going to be clear in this example now
+        y(z),z,x- here the vals are- 3,some random number, 2
+        and the reason is clear here, x initialized, y initialized based on z which isn't initialized yet, and then z initialized
+        so x,y,z order results in the output as such- lets say the order was float x,z,y, then it'd be perfectly fine
+        RULE OF THUMB- THE ORDER IN WHICH YOU LAY OUT THE THINGS IN MEMORY, THE SAME ORDER MUST BE RETAINED WHILE INITIALIZING
+        MEMBER INITIALIZER LIST 
+        */
+        Vectoraah():y(x), z(2.0f), x(3.0f){
+            // there's another way to initialize
+           /* 
             x = 0.0f;
             y = 0.0f;
             z = 0.0f;
+            */
         }
     Vectoraah operator+(const Vectoraah& rhs)const{
         Vectoraah result;
@@ -13,7 +30,6 @@ class Vectoraah{
         result.z = z + rhs.z;
         return result;
     }
-    float x,y,z;
     Vectoraah operator++(){
         x+=1;
         y+=1;
