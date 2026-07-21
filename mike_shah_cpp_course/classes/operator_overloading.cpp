@@ -24,6 +24,8 @@ class Vectoraah{
     bool operator==(const Vectoraah& rhs)const { // this  -> lmao and  rhs  -> lolxd
         // the reason for this is because there's already an implicit argument called "this" 
         return x == rhs.x && y == rhs.y && z == rhs.z;
+        // the problem with this is precision while dealing with floating point 
+        // lets say xyz of lmao are 0.99999f and xyz of lolxd are 1.0f, it'll juss say xyz of lmao == xyz of lolxd
     }
 };
 /* 
@@ -40,27 +42,29 @@ std::ostream& operator<<(std::ostream& os, const Vectoraah& obj){
 }
 int main(){
     Vectoraah lmao;
-        lmao.x = 6.f;
-        lmao.y = 7.f;
-        lmao.z = 8.f;
+        lmao.x = 0.999999999f;
+        lmao.y = 0.999999999f;
+        lmao.z = 0.99999999f;
 
     Vectoraah lolxd;
         lolxd.x = 1.f;
-        lolxd.y = 2.f;
-        lolxd.z = 3.f;
+        lolxd.y = 1.f;
+        lolxd.z = 1.f;
     Vectoraah result;
-    lmao = lmao+lolxd;
+    // lmao = lmao+lolxd;
     std::cout<<lmao.x<<","<<lmao.y<<","<<lmao.z<<std::endl;
     // what if i didn't want to create Vectoraah result, so i'll juss replace result with lmao and see
     // same answer
     // op ++ 
     std::cout<<"------------"<<std::endl;
+    /*
     ++lmao; 
     ++lmao;  
     ++lmao;  
     ++lmao; 
     std::cout<<lmao.x<<","<<lmao.y<<","<<lmao.z<<std::endl;
     std::cout<<lmao<<std::endl;
+    */
     std::cout<<(lmao==lolxd)<<std::endl;
     return 0;
 }
