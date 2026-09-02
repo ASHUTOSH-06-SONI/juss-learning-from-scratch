@@ -1,6 +1,5 @@
 #include<iostream>
 
-// dynamic dispatch- at run time, this helps us find the correct function to call 
 class Base{
     public:
         Base(){
